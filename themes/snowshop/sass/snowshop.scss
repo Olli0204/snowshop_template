@@ -1,0 +1,440 @@
+//
+// Platz für eigene Style Angaben in SCSS-Notation
+//
+// Alle Änderungen hier müssen anschließend mit einem SCSS-Compiler
+// (z.B. dem JTL-Theme-Editor Plugin) nach my-nova.css kompiliert werden
+// --------------------------------------------------
+
+// Lädt Core-Funktionen
+@import '../../../../NOVA/themes/base/sass/functions';
+
+// Lädt "my-nova"-Variablen. Hier können Variablen aus Bootstrap und dem NOVA-Theme überschrieben werden.
+@import "variables";
+
+// Lädt Style Angaben des Themes, hier "clear".
+@import '../../../../NOVA/themes/clear/sass/allstyles';
+// Für die anderen Themes müssen neben der "allstyles" des Themes auch die jeweiligen Regeln aus der "theme.scss"
+// (z.B. für blackline aus der blackline.scss) übernommen werden.
+// @import '../../../../NOVA/themes/blackline/sass/allstyles';
+// @import '../../../../NOVA/themes/midnight/sass/allstyles';
+
+// my-nova Theme
+// Hier können alle Style-Angaben notiert werden, die nur Auswirkungen auf dieses Theme haben
+// ------------------- Beginn eigenes CSS ----------------------------
+
+//Ribbon 2
+.ribbon-2{
+    color: #ffffff;
+}
+
+
+//Pfeile aus Kategorien entfernt
+.dropdown-ohne-pfeil::after {
+    display: none;
+}
+
+// Schrift für Kategorien in Fett
+.new-category-style {
+    font-weight: bold;
+}
+
+// Auf jeder Seite unten am Context ein bisschen Platz angehängt, damit nicht alles so gequetsch aussieht
+#content {
+    margin-bottom: 25px;
+}
+
+// Hintergrundfarbe der gesamten Seite auf Weißgeändert
+body {
+    background-color: #fff;
+    //color: $snowshop_grey !important;
+}
+
+a {
+    //color: $snowshop_grey;
+}
+
+// Fix für Search Fehler
+#jtl-search-backdrop {
+    display:none !important; 
+}
+
+.sonderpreis-neue-farbe {
+    color: $snowshop_color;
+}
+
+// ---------------------------------------------------------
+// Tags unterhalb des Banners
+
+.shop-tags-index-page a{
+    display: block;
+    text-decoration: none !important;
+}
+
+.shop-tags-index-page span{
+    margin-left: 5pt;
+}
+
+.shop-tags-index-page {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-tags-index-page a:hover{
+    color: $snowshop_grey;
+}
+
+.shop-tags-index-page-wrapper{
+    margin-top: 10pt;
+}
+
+@media only screen and (max-width: 740px){
+    .index-page-outer-wrapper{
+        width: 100% !important;
+    }
+}
+
+.index-page-outer-wrapper{
+    width: 70%;
+}
+
+// ---------------------------------------------------------
+// Aktions Bilder auf der Startseite
+
+.sale-images-style img{
+    height: 150pt;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #808080;
+}
+
+@media only screen and (max-width: 740px){
+    .sale-images-style img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.sale-images-heading{
+    margin-left: 15pt;
+    margin-top: 15pt;
+    margin-bottom: 5pt;
+}
+
+.sale-images-text{
+    margin-left: 15pt;
+}
+
+.sale-images-text a{
+    text-decoration: none;
+}
+
+
+// ---------------------------------------------------------
+// Grauer Bereich oberhalb des Headers
+.snowshop_topbar {
+    background-color: $snowshop_grey !important;
+    color: $white !important;
+    display: block !important;
+    //align-items: center !important;
+    justify-content: center !important;
+}
+
+.snowshop_topbar a {
+    color: $white !important;
+}
+
+.snowshop_topbar a:hover {
+    color: $snowshop_color !important;
+}
+
+.grey-top-bar {
+    display: inline-flex;
+    align-content: center;
+    
+    height: 32px !important;
+}
+
+.visible-img {
+    display: block !important;
+}
+
+.header-payment-logo {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.header-payment-logo .visible-img {
+    display: inline-block !important;
+}
+
+div #top-top-bar.container-fluid.d-lg-flex.flex-row-reverse {
+    justify-content: center !important;
+}
+
+// ---------------------------------------------------------
+// Ausblenden der Scrollbar
+
+html { 
+    overflow: auto !important; 
+    scrollbar-width: none !important;
+} 
+::-webkit-scrollbar { 
+    width: 0px !important; 
+    background: transparent !important; 
+} 
+
+// ---------------------------------------------------------
+// Kategorie Schriftart ändern
+.new-category-style {
+    font-weight: bold;
+}
+
+.sale-category-style {
+    color: $snowshop_color;
+}
+
+.category-dropdown-bottom-line{
+    height: 3px;
+    background-color: $snowshop_color;
+}
+
+// ---------------------------------------------------------
+// Pfeile entfernen
+.dropdown-ohne-pfeil::after {
+    display:none;
+}
+
+//------------------- Content Bereich -------------------
+
+#content-wrapper {
+    padding-top: 20px !important;
+}
+
+// ------------- Mega Slider auf der Startseite -------------------------
+
+.button-slider-index {
+    background-color: rgba(82, 82, 82, 0.8);
+    color: white;
+    borderstyle: solid;
+    border: 1px;
+    padding: 5px 20px 5px 20px;
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+.slider-text h2 {
+    font-size: 32px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .slider-text h2 {
+    font-size: 18px;
+  }
+  .button-slider-index {
+      padding: 2px 10px 2px 10px;
+      font-size: 14px;
+  }
+  .head-banner-main {
+      padding-top: -20px !important;
+      transform: translateX(-50%);
+      width: 200% !important;
+  }
+}
+
+.slider-button-text:hover {
+    color: $snowshop_color !important;
+}
+
+//-----------------------------------------------------------------------
+// -------------- Bilder Boxen Index Seite (Desktop Ansicht) ------------ 
+
+#nohover a:hover {
+    color: $snowshop_grey !important;
+}
+.big_bilder_box {
+    display: block;
+    padding-bottom: 20px;
+}
+
+.bilder_box {
+    display: flex;
+    flex-dircetion: row;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 16px;
+    margin-top: 18px;
+}
+
+.bilder_box div {
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.bilder_box div img {
+    width: 100%;
+    height: auto;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #808080;
+} 
+
+
+.bilder_box div div {
+    position: relative;
+    width: 200px;
+    margin: -45px auto 0px auto; 
+    font-size: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.75); 
+}
+
+.bilder_box div a {
+    text-decoration: none;
+}
+
+.heading-bilder {
+    position: relative;
+    margin: -215px auto 150px auto;
+    font-size: 40px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: 9px;
+    width: 300px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .bilder_box div img {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 99%;
+    } 
+    .bilder_box {
+        flex-wrap: wrap;
+    }
+    .bilder_box div {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+// ----------- Footer -----------
+
+#content {
+    padding-bottom: 0px !important;
+}
+
+#footer a {
+    color: #ffffff !important;
+}
+
+#footer-boxes div {
+    color: #ffffff !important;
+}
+
+#footer {
+    background-color: $snowshop_grey;
+    color: #ffffff !important;
+}
+
+#footer a:hover {
+    color: $snowshop_color !important;
+}
+
+#social-boxes-neu {
+    border-color: #ffffff !important;
+}
+
+#social-boxes-neu:hover {
+    border-color: $snowshop_color !important;
+}
+
+.bottom-bar-big-box {
+    background-color: $snowshop_grey;
+}
+
+.bottom-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: $snowshop_grey;
+}
+
+.bottom-bar p {
+    display: block;
+}
+
+.payment-bottom {
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+}
+
+.shipment-bottom {
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+}
+
+.secure-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.text-bottom-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.text-bottom-bar p {
+    margin: auto;
+}
+
+.alignment {
+    margin: auto;
+}
+
+
+// Newsletter Style anpassungen im Footer
+.newsletter-footer-heading{
+    color: #fff !important;
+}
+
+.new-button-bottom{
+    background-color: #fff !important;
+    color: $snowshop_grey !important;
+    border-color: $snowshop_grey !important;
+}
+
+.bottom-hr-new{
+    background-color: #fff !important;
+}
+
+#copyright {
+    background-color: $snowshop_grey;
+}
+
+// Orangenes Carousel am oberen Rand
+
+.red-banner-carousel {
+  background: $snowshop_color;
+  color: #fff !important;
+  text-align: center;
+  box-shadow: 0 0 6px -6px rgba(0, 0, 0, 0.3);
+}
+.red-banner-carousel a {
+  color: #fff !important;
+}
+#hoveraus:hover {
+  color: #ffffff !important;
+}
+#hoveraus a:hover {
+  color: #ffffff !important;
+}
