@@ -66,7 +66,7 @@
                                                     label="{lang key='newsletter' section='newsletter'} {lang key='newsletterSendSubscribe' section='newsletter'}"
                                                     label-sr-only=true}
                                                     {inputgroup}
-                                                        {input type="email" name="cEmail" id="newsletter_email" placeholder="{lang key='emailadress'}" aria=['label' => {lang key='emailadress'}]}
+                                                        {input type="email" name="cEmail" id="newsletter_email" placeholder="{lang key='emailadress'}" autocomplete="email" aria=['label' => {lang key='emailadress'}]}
                                                         {inputgroupaddon append=true}
                                                             {* Neue Klasse für den Submitbutton des Newsletters vergeben *}
                                                             {button type='submit' variant='secondary' class='min-w-sm new-button-bottom btn  btn-outline-primary btn-block'}

@@ -43,6 +43,7 @@
                                     title=$category->getName()|escape:'html'
                                     class="nav-link dropdown-toggle dropdown-ohne-pfeil"
                                     target="_self"
+                                    tabindex="0"
                                     data=["category-id"=>$category->getID()]
                                     aria=['controls' => "category-dropdown-{$category->getID()}", 'expanded' => 'false']}
                                     <span class="nav-mobile-heading new-category-style {if $category->getName() == "SALE" || $category->getName() == "% Sale %"}sale-category-style{/if}">{$category->getShortName()}</span>
@@ -53,7 +54,7 @@
                                         {container class="subcategory-wrapper"}
                                             {row class="lg-row-lg nav"}
                                                 {col lg=4 xl=3 class="nav-item-lg-m nav-item dropdown d-lg-none"}
-                                                    {link href=$category->getURL()}
+                                                    {link href=$category->getURL() class="d-block"}
                                                         <strong class="nav-mobile-heading">{lang key='menuShow' printf=$category->getShortName()}</strong>
                                                     {/link}
                                                 {/col}
@@ -102,7 +103,7 @@
     {block name='snippets-categories-mega-manufacturers'}
     {if $Einstellungen.template.megamenu.show_manufacturers !== 'N'
         && ($Einstellungen.global.global_sichtbarkeit != 3 || JTL\Session\Frontend::getCustomer()->getID() > 0)}
-        {get_manufacturers assign='manufacturers'}
+        {get_manufacturers assign='manufacturers' limit=$Einstellungen.template.megamenu.manufacturer_dropdown_max assignTotal='manufacturersTotal'}
         {if !empty($manufacturers)}
             {assign var=manufacturerOverview value=null}
             {if isset($oSpezialseiten_arr[$smarty.const.LINKTYP_HERSTELLER])}
@@ -110,10 +111,11 @@
             {/if}
             {block name='snippets-categories-mega-manufacturers-inner'}
                 <li class="nav-item nav-scrollbar-item dropdown dropdown-full new-category-style {if $nSeitenTyp === $smarty.const.PAGE_HERSTELLER}active{/if}">
-                    {link href="{if $manufacturerOverview !== null}{$manufacturerOverview->getURL()}{else}#{/if}" 
-                        title={lang key='manufacturers'} 
-                        class="nav-link dropdown-toggle dropdown-ohne-pfeil" 
+                    {link href="{if $manufacturerOverview !== null}{$manufacturerOverview->getURL()}{else}#{/if}"
+                        title={lang key='manufacturers'}
+                        class="nav-link dropdown-toggle dropdown-ohne-pfeil"
                         target="_self"
+                        tabindex="0"
                         aria=['controls' => 'manufacturers-dropdown', 'expanded' => 'false']}
                         <span class="text-truncate nav-mobile-heading">
                             {if $manufacturerOverview !== null && !empty($manufacturerOverview->getName())}
@@ -161,6 +163,18 @@
                                             {/block}
                                         {/col}
                                     {/foreach}
+                                {block name='snippets-categories-mega-manufacturers-show-all'}
+                                    {if $manufacturerOverview !== null
+                                        && $manufacturersTotal|default:0 > count($manufacturers)}
+                                        {row}
+                                            {col class='text-center mt-3'}
+                                                {link href="{$manufacturerOverview->getURL()}" class='submenu-headline submenu-headline-toplevel nav-link btn btn-link'}
+                                                    {lang key='showManufacturerButton'}
+                                                {/link}
+                                            {/col}
+                                        {/row}
+                                    {/if}
+                                {/block}
                                 {/row}
                             {/container}
                         </div>
@@ -220,7 +234,7 @@
                 {if JTL\Session\Frontend::getCurrencies()|count > 1}
                     <li class="currency-nav-scrollbar-item nav-item nav-scrollbar-item dropdown dropdown-full d-lg-none">
                         {block name='layout-header-top-bar-user-settings-currency-link'}
-                            {link id='currency-dropdown' href='#' title={lang key='currency'} class="nav-link dropdown-toggle" target="_self" aria=['controls' => 'currency-dropdown-menu', 'expanded' => 'false']}
+                            {link id='currency-dropdown' href='#' title={lang key='currency'} class="nav-link dropdown-toggle" target="_self" tabindex="0" aria=['controls' => 'currency-dropdown-menu', 'expanded' => 'false']}
                                 {lang key='currency'}
                             {/link}
                         {/block}
