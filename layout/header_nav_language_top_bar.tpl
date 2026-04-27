@@ -3,7 +3,7 @@
     {navitemdropdown
         no-caret=true
         right=true
-        text='<span class="fas fa-globe-asia"></span>'
+        text='<span class="fas fa-globe-europe"></span>'
         class="language-icon-dropdown"}
             {foreach $smarty.session.Sprachen as $language}
                 {block name='snippets-language-dropdown-item'}

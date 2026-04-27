@@ -1,32 +1,48 @@
-# NOVA-Child-Vorlage für Shop 5.0
+# Snowshop Template
 
-Dieses Template dient als Vorlage für ein eigenes Child-Template des NOVA.
-Es basiert auf dem NOVA-Theme "clear" und enthält alle (und nur die) Dateien, die mindestens in einem NOVA-Child-Template
-vorhanden sein müssen.
-- Alle notwendigen Style- und SASS-Dateien sind angelegt, beinhalten aber ausser den notwendigen Vererbungs-Includes 
-keine eigenen Änderungen.
+JTL-Shop 5 Child-Template für Snowshop, basierend auf dem NOVA-Theme.
+
+## Voraussetzungen
+
+- JTL-Shop >= 5.5.0
+- NOVA-Template als Parent
 
 ## Installation
-**ACHTUNG!!!**  
-Bitte nutzen Sie zum Download den Link (ensprechend der gewünschten Version) : https://build.jtl-shop.de/#template  
-  
-Bei einem direkten Download über *gitlab.com* muss der automatisch erstellte Ordner beim Entpacken 
-des `.zip`-Files umbenannt werden.  
-Die NOVA-Child-Vorlage ist so angelegt, dass sie in das Verzeichnis `NOVAChild/` des Template-Ordners installiert
-werden muss, um korrekt zu funktionieren! Eine Änderung des Verzeichnisnamens ist nur möglich, wenn dazu auch die 
-Namespace-Zeile (Zeile 3) in der Datei [Bootstrap.php](Bootstrap.php) entsprechend 
-zu `namespace Template\neuerVerzeichnisname;` geändert wird.
 
-## Parent Theme ändern
+Den Ordner `snowshop_template` in das Verzeichnis `/templates/` des JTL-Shops kopieren. Der Ordnername muss mit dem Namespace in `Bootstrap.php` übereinstimmen (`Template\Snowshop551`).
 
-Zum Ändern des Parent-Theme müssen lediglich die Pfade für die Imports in [nova-child.scss](themes/my-nova/sass/nova-child.scss)
-und [_variables.scss](themes/my-nova/sass/_variables.scss) angepasst werden. Anschließend muss die nova-cild.css neu 
-kompiliert werden
+## Themes
 
-## Versionen
+Das Template enthält zwei wählbare Themes, konfigurierbar im Template-Einstellungen:
 
-- [Shop 5.0](https://gitlab.com/jtl-software/jtl-shop/child-templates/NOVA-child-vorlage/tree/master)
+| Theme | Beschreibung |
+|---|---|
+| `my-nova` | Eigenes Theme ohne feste Farbdefinitionen (NOVA "clear" als Basis) |
+| `snowshop` | Snowshop-Theme mit Brand-Farben (`#FFA54F` primary, `#525252` secondary) |
 
-## Related Links
+## Struktur
 
-[Templates](http://docs.jtl-shop.de/de/latest/shop_templates/index.html) - Entwickler Dokumentation Templates
+- **`layout/`** — Überschreibt NOVA-Layouts: Header, Footer, Top-Bar, Navigations-Icons, Sprachumschalter
+- **`snippets/categories_mega.tpl`** — Mega-Menü mit SALE-Kategorie-Hervorhebung
+- **`productdetails/price.tpl`** — Preisdarstellung inkl. Staffelpreise und Sonderpreise
+- **`themes/my-nova/`** — SCSS + kompiliertes CSS für das my-nova Theme; `custom.css` für Anpassungen ohne SCSS-Compiler
+- **`themes/snowshop/`** — SCSS + kompiliertes CSS für das Snowshop-Theme; `custom.css` für Anpassungen
+- **`js/custom.js`** — Eigenes JavaScript (wird als letztes geladen)
+- **`mediafiles/`** — Template-eigene Bilder (Frontpage-Banner, Payment-/Versand-Logos)
+
+## CSS anpassen
+
+Kleine CSS-Anpassungen direkt in `themes/<theme>/custom.css` eintragen — diese Datei wird nach dem kompilierten CSS geladen und überschreibt es.
+
+Für größere Änderungen die SCSS-Dateien unter `themes/<theme>/sass/` bearbeiten und anschließend mit dem JTL-Theme-Editor Plugin oder einem externen SCSS-Compiler neu kompilieren.
+
+## Top-Bar
+
+Die Top-Bar (`layout/header_top_bar.tpl`) zeigt Payment-Logos und Versandhinweise. Jedes Logo hat einen eigenen Smarty-Block für einfache Überschreibbarkeit:
+
+- `layout-header-safe-shopping` — "Sichere Bezahlung"-Hinweis
+- `layout-header-apple-pay` — Apple Pay Logo
+- `layout-header-paypal` — PayPal Logo
+- `layout-header-amazon-pay` — Amazon Pay Logo
+- `layout-header-google-pay` — Google Pay Logo
+- `layout-header-shipment` — Gratis-Versand-Hinweis

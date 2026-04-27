@@ -45,7 +45,7 @@
                                     target="_self"
                                     data=["category-id"=>$category->getID()]
                                     aria=['controls' => "category-dropdown-{$category->getID()}", 'expanded' => 'false']}
-                                    <span class="nav-mobile-heading new-category-style {if {$category->getName()} == "SALE" || {$category->getName()} == "% Sale %"}sale-category-style{/if}">{$category->getShortName()}</span>
+                                    <span class="nav-mobile-heading new-category-style {if $category->getName() == "SALE" || $category->getName() == "% Sale %"}sale-category-style{/if}">{$category->getShortName()}</span>
                                 {/link}
                                 {* Oberhalb wurden die Färbung für die sales kategorie eingefügt und die Pfeile entfernt *}
                                 <div id="category-dropdown-{$category->getID()}" class="dropdown-menu">
