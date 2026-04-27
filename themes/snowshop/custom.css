@@ -18,5 +18,5 @@
 
 /* Footer-Link-Hover greift sonst auf btn-Links (z.B. "Vertrag widerrufen") */
 #footer a.btn:hover {
-    color: inherit !important;
+    color: #525252 !important;
 }

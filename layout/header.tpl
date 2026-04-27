@@ -164,6 +164,7 @@
                 </noscript>
             {/foreach}
             <script>
+                window.jtlShopBaseUrl = '{$ShopURL}';
                 /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
                 (function (w) {
                     "use strict";
@@ -335,7 +336,7 @@
         {/block}
         {if !empty($oUploadSchema_arr)}
             <script defer src="{$ShopURL}/{$templateDir}js/fileinput/fileinput.min.js"></script>
-            <script defer src="{$ShopURL}/{$templateDir}js/fileinput/themes/fas/theme.min.js"></script>
+            <script defer src="{$ShopURL}/{$templateDir}js/fileinput/themes/fa5/theme.min.js"></script>
             <script defer src="{$ShopURL}/{$templateDir}js/fileinput/locales/{$uploaderLang}.js"></script>
         {/if}
         {if $Einstellungen.preisverlauf.preisverlauf_anzeigen === 'Y' && !empty($bPreisverlauf)}
@@ -413,12 +414,20 @@
                 {lang key='skipToContent'}
             {/link}
             {if $nSeitenTyp !== $smarty.const.PAGE_BESTELLVORGANG}
-                {link href="#search-header" class="btn-skip-to"}
-                    {lang key='skipToSearch'}
-                {/link}
-                {link href="#mainNavigation" class="btn-skip-to"}
-                    {lang key='skipToNav'}
-                {/link}
+                {if !$isMobile}
+                    {link href="#search-header" class="btn-skip-to"}
+                        {lang key='skipToSearch'}
+                    {/link}
+                {/if}
+                {if $isMobile}
+                    {link href="#mainNavigation" class="btn-skip-to collapsed" type="button" data=["toggle"=>"collapse", "target"=>"#mainNavigation"] aria=["controls"=>"mainNavigation", "expanded"=>"false"]}
+                        {lang key='skipToNav'}
+                    {/link}
+                {else}
+                    {link href="#mainNavigation" class="btn-skip-to"}
+                        {lang key='skipToNav'}
+                    {/link}
+                {/if}
             {/if}
         {/block}
         {block name='header-footer-consent-manager'}
@@ -429,15 +438,16 @@
                     <script>
                         setTimeout(function() {
                             $('#consent-manager, #consent-settings-btn').removeClass('d-none');
-                        }, 100)
+                        }, 100);
+
                         document.addEventListener('consent.updated', function(e) {
                             $.post('{$ShopURLSSL}/_updateconsent', {
-                                    'action': 'updateconsent',
-                                    'jtl_token': '{$smarty.session.jtl_token}',
-                                    'data': e.detail
-                                }
-                            );
+                                'action': 'updateconsent',
+                                'jtl_token': '{$smarty.session.jtl_token}',
+                                'data': e.detail
+                            });
                         });
+
                         {if !isset($smarty.session.consents)}
                         document.addEventListener('consent.ready', function(e) {
                             document.dispatchEvent(new CustomEvent('consent.updated', { detail: e.detail }));
@@ -447,24 +457,29 @@
                         window.CM = new ConsentManager({
                             version: {$smarty.session.consentVersion|default:1}
                         });
-                        var trigger = document.querySelectorAll('.trigger')
+
+                        // Delegierter Click-Handler (funktioniert auch nach AJAX)
                         var triggerCall = function(e) {
                             e.preventDefault();
-                            let type = e.target.dataset.consent;
-                            if (CM.getSettings(type) === false) {
-                                CM.openConfirmationModal(type, function() {
-                                    let data = CM._getLocalData();
-                                    if (data === null ) {
+                            const type = (e.currentTarget && e.currentTarget.dataset) ? e.currentTarget.dataset.consent : undefined;
+                            if (!type) return;
+
+                            if (window.CM && window.CM.getSettings(type) === false) {
+                                window.CM.openConfirmationModal(type, function () {
+                                    let data = window.CM._getLocalData();
+                                    if (data === null) {
                                         data = { settings: {} };
                                     }
                                     data.settings[type] = true;
                                     document.dispatchEvent(new CustomEvent('consent.updated', { detail: data.settings }));
                                 });
                             }
-                        }
-                        for (let i = 0; i < trigger.length; ++i) {
-                            trigger[i].addEventListener('click', triggerCall)
-                        }
+                        };
+
+                        $(document)
+                            .off('click.consentTrigger')
+                            .on('click.consentTrigger', '.trigger', triggerCall);
+
                     </script>
                 {/inline_script}
             {/if}
