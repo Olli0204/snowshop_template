@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Template\Snowshop551;
+namespace Template\Snowshop570;
 
 /**
  * Class Bootstrap
