@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Template\Snowshop570;
+namespace Template\snowshop_template;
 
 /**
  * Class Bootstrap
- * @package Template\NOVAChild
+ * @package Template\snowshop_template
  */
 class Bootstrap extends \Template\NOVA\Bootstrap
 {

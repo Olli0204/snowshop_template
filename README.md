@@ -4,12 +4,20 @@ JTL-Shop 5 Child-Template für Snowshop, basierend auf dem NOVA-Theme.
 
 ## Voraussetzungen
 
-- JTL-Shop >= 5.5.0
+- JTL-Shop >= 5.7.0 (siehe `MinShopVersion` in `template.xml`)
 - NOVA-Template als Parent
 
 ## Installation
 
-Den Ordner `snowshop_template` in das Verzeichnis `/templates/` des JTL-Shops kopieren. Der Ordnername muss mit dem Namespace in `Bootstrap.php` übereinstimmen (`Template\Snowshop551`).
+Den geklonten Ordner `snowshop_template` direkt in das Verzeichnis `/templates/` des JTL-Shops kopieren.
+
+Der Ordnername **muss** mit dem Namespace in `Bootstrap.php` übereinstimmen (`Template\snowshop_template`). Da das Repository genauso heißt, passt der von `git clone` erzeugte Ordnername bereits — er muss **nicht** umbenannt werden:
+
+```bash
+git clone git@github.com:Olli0204/snowshop_template.git /pfad/zum/shop/templates/snowshop_template
+```
+
+Der Name ist bewusst **versionsunabhängig**: Bei Shop-Updates bleibt er gleich, die Version wird nur in `template.xml` gepflegt. So entfällt das frühere Umbenennen von Ordner + Namespace bei jedem Update.
 
 ## Themes
 

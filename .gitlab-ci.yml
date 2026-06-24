@@ -2,7 +2,7 @@
 variables:
   PLUGIN_CI_IMAGE_NAME: "registry.gitlab.com/jtl-software/jtl-shop/core/ci-plugins"
   PLUGIN_DOCKER_WORKING_DIR : "/jtl_plugin"
-  ZIP_FILE_NAME_PREFIX : "NOVAChild"
+  ZIP_FILE_NAME_PREFIX : "snowshop_template"
   ZIP_FILE_TARGET_FOLDER : "templates"
 
 stages:
