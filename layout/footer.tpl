@@ -103,7 +103,13 @@
                             {/row}
                         {/if}
                     {/block}
-
+                    {block name='layout-footer-withdrawal'}
+                        {row class="withdrawal-link-wrapper"}
+                            {col cols=12 sm=6 md=4 lg=3}
+                                {include file='snippets/withdrawal_link.tpl'}
+                            {/col}
+                        {/row}
+                    {/block}
                     {block name='layout-footer-additional'}
                         {if $Einstellungen.template.footer.socialmedia_footer === 'Y'}
                             {row class="footer-social-media"}
