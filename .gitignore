@@ -1,0 +1,12 @@
+# Kompilierte Theme-Stylesheets
+# Diese Dateien werden auf dem produktiven System vom JTL-Theme-Editor neu
+# kompiliert und aendern sich dort staendig. Sie gehoeren daher nicht unter
+# Versionskontrolle. Die Quellen liegen in themes/<theme>/sass/.
+themes/*/*.css
+themes/*/*.css.map
+
+# Handgepflegtes Custom-CSS bleibt aber getrackt.
+!themes/*/custom.css
+
+# macOS
+.DS_Store
