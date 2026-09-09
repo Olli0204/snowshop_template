@@ -68,7 +68,16 @@
 }
 #header-top-bar.snowshop-topbar .nav-link:hover .snowshop-topbar__arrow { transform: translateX(3px); }
 #header-top-bar.snowshop-topbar .dropdown-menu { font-size: .85rem; }
-#header-top-bar.snowshop-topbar .snowshop-topbar__promo:only-child { margin: 0 auto; }
+#header-top-bar.snowshop-topbar .snowshop-topbar__inner {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
+}
+#header-top-bar.snowshop-topbar .snowshop-topbar__inner--center { justify-content: center; }
+#header-top-bar.snowshop-topbar .snowshop-topbar__inner--center .snowshop-topbar__promo { margin: 0 auto; }
 
 /* Hinweisleiste unterhalb des Headers (Smartphone/Tablet) */
 .snowshop-promobar {
@@ -150,9 +159,12 @@
     border-radius: 2rem;
     background: #fff0e0;
     background: color-mix(in srgb, var(--ss-accent) 18%, #fff);
+    margin: -.25rem 0;
     color: #c9661a;
     color: color-mix(in srgb, var(--ss-accent) 72%, #000);
     font-weight: 700;
+    line-height: 1.25;
+    vertical-align: baseline;
     transition: background-color .2s, color .2s;
 }
 #jtl-nav-wrapper .nav-link:hover .sale-category-style { background: var(--ss-accent); color: #fff; }

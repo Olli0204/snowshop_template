@@ -10,6 +10,7 @@
         {$spIsEn     = $lang === 'eng'}
         {$spShowUsps = ($spSettings.topbar_usps|default:'N') === 'Y'}
         {$spShowCurr = JTL\Session\Frontend::getCurrencies()|count > 1}
+        <div class="snowshop-topbar__inner{if !$spShowUsps} snowshop-topbar__inner--center{/if}">
         {if $spShowUsps || $spShowCurr}
         {nav tag='ul' class='topbar-main snowshop-topbar__usps'}
             {block name='layout-header-top-bar-usps'}
@@ -54,5 +55,6 @@
                 {/if}
             {/block}
         {/if}
+        </div>
     {/strip}
 {/block}

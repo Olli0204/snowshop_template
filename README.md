@@ -67,6 +67,7 @@ als Kommentar markiert bzw. oben beschrieben.
 ## Changelog
 
 ### 5.8.1
+- Top-Bar: Aktionshinweis über Wrapper-Klasse zentriert (unabhängig von Browser-Cache und Nachbarelementen); SALE-Pille sitzt auf der Höhe der übrigen Menüpunkte
 - Top-Bar: Vorteile per Einstellung abschaltbar (Standard aus, Aktionshinweis zentriert) – die Startseite hat bereits die Vorteile-Leiste
 - Footer: Vertrauensleiste mit farbigen Logos auf dunklen Chips
 - Header: Navigations-Selektoren an NOVA 5.8 (`#mainNavigation .navbar-nav`) angepasst, kompaktere Abstände zwischen 992 und 1299 px, damit fünf Hauptpunkte neben Logo und Suche passen
