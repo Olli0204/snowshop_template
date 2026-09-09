@@ -1,28 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Template isFullResponsive="true">
-    <Name>Snowshop 5.7.1</Name>
+    <Name>Snowshop</Name>
     <Author>Oliver Kamps</Author>
     <URL></URL>
     <Parent>NOVA</Parent>
     <Preview>preview.png</Preview>
-    <Version>5.7.1</Version>
-    <MinShopVersion>5.7.0</MinShopVersion>
-    <Description>Snowshop Template Version: 5.7.1</Description>
+    <Version>5.8.0</Version>
+    <MinShopVersion>5.8.0</MinShopVersion>
+    <Description>Snowshop Child-Template auf NOVA-Basis – Version 5.8.0</Description>
     <Settings>
         <Section Name="Theme" Key="theme">
-            <Setting Description="Theme" Key="theme_default" Type="select" Value="my-nova" override="true">
-                <Option Value="my-nova">My NOVA - mein eigenes NOVA-Theme!</Option>
+            <Setting Description="Theme" Key="theme_default" Type="select" Value="snowshop" override="true">
                 <Option Value="snowshop">Snowshop-Theme</Option>
+                <Option Value="my-nova">My NOVA - mein eigenes NOVA-Theme!</Option>
             </Setting>
+        </Section>
+        <Section Name="Snowshop: Top-Bar" Key="snowshop">
+            <Setting Description="Vorteil 1 – Text" Key="usp_1_text" Type="text" Value="Gratis Versand ab 100 €"/>
+            <Setting Description="Vorteil 1 – Text (Englisch)" Key="usp_1_text_en" Type="text" Value="Free shipping from 100 €"/>
+            <Setting Description="Vorteil 1 – Link" Key="usp_1_url" Type="text" Value="Versandkosten-Liefergebiet"/>
+            <Setting Description="Vorteil 1 – Icon (Font-Awesome-Klasse)" Key="usp_1_icon" Type="text" Value="fas fa-truck"/>
+            <Setting Description="Vorteil 2 – Text" Key="usp_2_text" Type="text" Value="Fachgeschäft Westside in Münster"/>
+            <Setting Description="Vorteil 2 – Text (Englisch)" Key="usp_2_text_en" Type="text" Value="Westside store in Münster"/>
+            <Setting Description="Vorteil 2 – Link" Key="usp_2_url" Type="text" Value="Wir-ueber-uns"/>
+            <Setting Description="Vorteil 2 – Icon (Font-Awesome-Klasse)" Key="usp_2_icon" Type="text" Value="fas fa-store"/>
+            <Setting Description="Vorteil 3 – Text" Key="usp_3_text" Type="text" Value="Sichere Bezahlung"/>
+            <Setting Description="Vorteil 3 – Text (Englisch)" Key="usp_3_text_en" Type="text" Value="Secure payment"/>
+            <Setting Description="Vorteil 3 – Link" Key="usp_3_url" Type="text" Value="Zahlungsmoeglichkeiten"/>
+            <Setting Description="Vorteil 3 – Icon (Font-Awesome-Klasse)" Key="usp_3_icon" Type="text" Value="fas fa-lock"/>
+            <Setting Description="Aktionshinweis – Text (leer = ausblenden)" Key="promo_text" Type="text" Value="Newsletter anmelden und 10 € Rabatt sichern"/>
+            <Setting Description="Aktionshinweis – Text (Englisch)" Key="promo_text_en" Type="text" Value="Subscribe to our newsletter and save 10 €"/>
+            <Setting Description="Aktionshinweis – Link" Key="promo_url" Type="text" Value="Newsletter"/>
+            <Setting Description="Footer – Claim unter dem Shopnamen" Key="footer_tagline" Type="text" Value="Snowboards, Bindungen, Boots und alles für deinen Winter – aus Münster, seit über 25 Jahren."/>
+            <Setting Description="Footer – Claim (Englisch)" Key="footer_tagline_en" Type="text" Value="Snowboards, bindings, boots and everything for your winter – from Münster, for over 25 years."/>
+            <Setting Description="Footer – Adresse" Key="footer_address" Type="textarea" Value=""/>
+            <Setting Description="Footer – Telefon" Key="footer_phone" Type="text" Value=""/>
+            <Setting Description="Footer – E-Mail" Key="footer_mail" Type="text" Value=""/>
+            <Setting Description="Footer – Öffnungszeiten" Key="footer_hours" Type="textarea" Value=""/>
+            <Setting Description="Footer – Öffnungszeiten (Englisch)" Key="footer_hours_en" Type="textarea" Value=""/>
         </Section>
     </Settings>
     <Minify>
         <CSS Name="my-nova.css">
             <File Path="themes/my-nova/my-nova.css"/>
+            <File Path="css/snowshop-modern.css"/>
             <File Path="themes/my-nova/custom.css"/>
         </CSS>
         <CSS Name="snowshop.css">
             <File Path="themes/snowshop/snowshop.css"/>
+            <File Path="css/snowshop-modern.css"/>
             <File Path="themes/snowshop/custom.css"/>
         </CSS>
     </Minify>

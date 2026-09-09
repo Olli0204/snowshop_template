@@ -85,7 +85,7 @@
                         {elseif $Einstellungen.template.theme.theme_default === 'clear'}#f8bf00
                         {else}#1C1D2C
                   {/if}{/strip}">
-        {/block} 
+        {/block}
 
         {block name='layout-header-head-resources'}
             {if empty($parentTemplateDir)}
@@ -325,6 +325,10 @@
             {/if}
             <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fontawesome/webfonts/fa-solid-900.woff2" as="font" crossorigin/>
             <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fontawesome/webfonts/fa-regular-400.woff2" as="font" crossorigin/>
+            {if $Einstellungen.global.global_guarantee_label_enabled === 'Y'}
+                <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fonts/inter/Inter-ExtraBold.woff2" as="font" crossorigin/>
+                <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fonts/inter/Inter-Regular.woff2" as="font" crossorigin/>
+            {/if}
         {/block}
         {block name='layout-header-head-resources-modulepreload'}
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/globals.js" as="script" crossorigin>
@@ -458,7 +462,7 @@
                             version: {$smarty.session.consentVersion|default:1}
                         });
 
-                        // Delegierter Click-Handler (funktioniert auch nach AJAX)
+                        // Zentrale Handler-Funktion
                         var triggerCall = function(e) {
                             e.preventDefault();
                             const type = (e.currentTarget && e.currentTarget.dataset) ? e.currentTarget.dataset.consent : undefined;
@@ -476,6 +480,7 @@
                             }
                         };
 
+                        // Delegierter Click-Handler (funktioniert auch nach AJAX)
                         $(document)
                             .off('click.consentTrigger')
                             .on('click.consentTrigger', '.trigger', triggerCall);
@@ -507,11 +512,9 @@
                 && $Einstellungen.template.header.menu_show_topbar === 'Y'
                 && $nSeitenTyp !== $smarty.const.PAGE_BESTELLVORGANG}
                 {block name='layout-header-branding-top-bar'}
-                    <div id="header-top-bar" class="d-none topbar-wrapper {*einfügen der Styles für die Topbar*}snowshop_topbar {if $Einstellungen.template.header.menu_single_row === 'Y'}full-width-mega{/if} {if $Einstellungen.template.header.header_full_width === 'Y'}is-fullwidth{/if} d-lg-flex">
-                        <div {* Id für Topbar gesetzt *}id="top-top-bar" class="{if $headerWidth === 'B'}container{else}container-fluid {if $headerWidth === 'N'}container-fluid-xl{/if}{/if} d-lg-flex flex-row-reverse">
-                            {if !$isMobile}
-                                {include file='layout/header_top_bar.tpl'}
-                            {/if}
+                    <div id="header-top-bar" class="d-none topbar-wrapper snowshop-topbar {if $Einstellungen.template.header.menu_single_row === 'Y'}full-width-mega{/if} {if $Einstellungen.template.header.header_full_width === 'Y'}is-fullwidth{/if} d-lg-flex">
+                        <div class="{if $headerWidth === 'B'}container{else}container-fluid {if $headerWidth === 'N'}container-fluid-xl{/if}{/if} d-lg-flex flex-row-reverse">
+                            {include file='layout/header_top_bar.tpl'}
                         </div>
                     </div>
                 {/block}
@@ -536,12 +539,12 @@
                                     {block name='layout-header-secure-checkout'}
                                         <div class="secure-checkout-icon ml-auto-util ml-lg-0">
                                             {block name='layout-header-secure-checkout-title'}
-                                                <i class="fas fa-lock icon-mr-2" aria-label="{lang key='secureCheckout' section='checkout'}" title="{lang key='secureCheckout' section='checkout'}"></i>{lang key='secureCheckout' section='checkout'}
+                                                <i class="fas fa-lock icon-mr-2" aria-label="{lang key='secureCheckout' section='checkout'}" role="img" title="{lang key='secureCheckout' section='checkout'}"></i>{lang key='secureCheckout' section='checkout'}
                                             {/block}
                                         </div>
                                         <div class="secure-checkout-topbar ml-auto-util d-none d-lg-block">
                                             {block name='layout-header-secure-include-header-top-bar'}
-                                                {* {include file='layout/header_top_bar.tpl'} *}
+                                                {include file='layout/header_top_bar.tpl'}
                                             {/block}
                                         </div>
                                     {/block}
@@ -566,18 +569,10 @@
                         </div>
                     {/if}
                 {/block}
-
-                {* Orangene Linie am unteren Rand des Headers. Hier kann ggf. wieder ein Carousel eingebaut werden. *}
-                {if $nSeitenTyp !== $smarty.const.PAGE_BESTELLVORGANG}
-                    <div class="red-banner-carousel" id="hoveraus">
-                        {if $lang eq "eng"}
-                            <a href="https://www.snowshop.de/Newsletter_1">Newsletter registration 10€ discount</a>
-                        {else}
-                            <a href="https://www.snowshop.de/Newsletter">Newsletteranmeldung 10€ Rabatt</a>
-                        {/if}
-                    </div>
-                {/if}
             </header>
+            {block name='layout-header-snowshop-promobar'}
+                {include file='layout/header_promobar.tpl'}
+            {/block}
             {block name='layout-header-search-fixed'}
                 {if $Einstellungen.template.header.mobile_search_type === 'fixed' && $isMobile}
                     <div class="container-fluid container-fluid-xl fixed-search fixed-top smoothscroll-top-search d-lg-none d-none">
@@ -600,10 +595,27 @@
                 {include file='snippets/banner.tpl' isFluid=true}
             {/block}
         {/if}
-        {assign var=isFluidSlider value=$Einstellungen.template.theme.slider_full_width === 'Y' && isset($oSlider) && count($oSlider->getSlides()) > 0}
-        {if $isFluidSlider}
+        {assign var=isFluidSlider value=$Einstellungen.template.theme.slider_full_width === 'Y'}
+        {if $isFluidSlider && isset($oSlider) && count($oSlider->getSlides()) > 0}
             {block name='layout-header-fluid-banner-include-slider'}
-                {include file='snippets/slider.tpl' isFluid=true}
+                {include file='snippets/slider.tpl'
+                    sliderID=$oSlider->getID()
+                    sliderTheme=$oSlider->getTheme()
+                    sliderSlides=$oSlider->getTemplateSlides()
+                    sliderHasThumbs=$oSlider->getThumbnail()
+                    sliderPauseTime=$oSlider->getPauseTime()
+                    sliderAnimationSpeed=$oSlider->getAnimationSpeed()
+                    sliderPauseOnHover=$oSlider->getPauseOnHover()
+                    sliderDirectionNav=$oSlider->getDirectionNav()
+                    sliderControlNav=$oSlider->getControlNav()
+                    sliderRandomStart=$oSlider->getRandomStart()
+                    sliderCropImages=$oSlider->getCropImages()
+                    sliderEffect=$oSlider->getValidatedEffect()
+                    sliderAutoplay=true
+                    sliderUseContainer=true
+                    sliderContainerFluid=true
+                    sliderMountBefore=true
+                }
             {/block}
         {/if}
     {/block}

@@ -1,22 +1,6 @@
 /*
  * Platz für eigene Änderungen direkt als CSS
  * Die hier gemachten Änderungen überschreiben ggfs. andere Styles, da diese Datei als letzte geladen wird.
+ *
+ * Das Header-/Footer-Design liegt in css/snowshop-modern.css.
  */
-
-.topbar-icon {
-    margin-left: 15px;
-    margin-right: 5px;
-}
-
-.topbar-text {
-    margin-right: 15px;
-}
-
-.topbar-payment-img {
-    margin-top: 2px;
-}
-
-/* Footer-Link-Hover greift sonst auf btn-Links (z.B. "Vertrag widerrufen") */
-#footer a.btn:hover {
-    color: inherit !important;
-}

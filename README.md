@@ -1,56 +1,81 @@
 # Snowshop Template
 
-JTL-Shop 5 Child-Template für Snowshop, basierend auf dem NOVA-Theme.
+JTL-Shop-5 Child-Template für Snowshop auf Basis von NOVA. Stand: **NOVA 5.8.0** (JTL-Shop 5.8.0).
 
 ## Voraussetzungen
 
-- JTL-Shop >= 5.7.0 (siehe `MinShopVersion` in `template.xml`)
+- JTL-Shop >= 5.8.0 (siehe `MinShopVersion` in `template.xml`)
 - NOVA-Template als Parent
 
 ## Installation
 
-Den geklonten Ordner `snowshop_template` direkt in das Verzeichnis `/templates/` des JTL-Shops kopieren.
-
-Der Ordnername **muss** mit dem Namespace in `Bootstrap.php` übereinstimmen (`Template\snowshop_template`). Da das Repository genauso heißt, passt der von `git clone` erzeugte Ordnername bereits — er muss **nicht** umbenannt werden:
+Den geklonten Ordner direkt in das Verzeichnis `/templates/` des JTL-Shops kopieren:
 
 ```bash
 git clone git@github.com:Olli0204/snowshop_template.git /pfad/zum/shop/templates/snowshop_template
 ```
 
-Der Name ist bewusst **versionsunabhängig**: Bei Shop-Updates bleibt er gleich, die Version wird nur in `template.xml` gepflegt. So entfällt das frühere Umbenennen von Ordner + Namespace bei jedem Update.
+Der Ordnername sollte `snowshop_template` lauten, damit er zum Namespace in `Bootstrap.php`
+(`Template\snowshop_template`) passt. Heißt der Ordner anders (z. B. `Snowshop570`), lädt JTL die
+`Bootstrap.php` nicht – das Template funktioniert trotzdem, nur eigene PHP-Erweiterungen dort würden fehlen.
+
+Nach dem Kopieren: Backend → Template → Snowshop aktivieren, dann **Systemverwaltung → Cache leeren**.
 
 ## Themes
 
-Das Template enthält zwei wählbare Themes, konfigurierbar im Template-Einstellungen:
-
 | Theme | Beschreibung |
 |---|---|
+| `snowshop` | Snowshop-Theme mit Brand-Farben (`#FFA54F` primary, `#525252` secondary) – Standard |
 | `my-nova` | Eigenes Theme ohne feste Farbdefinitionen (NOVA "clear" als Basis) |
-| `snowshop` | Snowshop-Theme mit Brand-Farben (`#FFA54F` primary, `#525252` secondary) |
+
+## Design (Header, Footer, Startseite)
+
+Das moderne Design von Top-Bar, Header, Mega-Menü und Footer liegt in **`css/snowshop-modern.css`**.
+Die Datei wird über `template.xml` (Minify) nach dem kompilierten Theme-CSS geladen und braucht **keine
+SCSS-Kompilierung**. Farben kommen aus dem Theme (`--primary`).
+
+Texte und Kontaktdaten werden im Backend gepflegt: **Template → Einstellungen → „Snowshop: Top-Bar“**
+
+- Drei Vorteile für die Top-Bar (Text, englischer Text, Link, Font-Awesome-Icon)
+- Aktionshinweis (z. B. Newsletter-Rabatt): Desktop rechts in der Top-Bar, mobil als schmale Leiste unter dem Header
+- Footer: Claim, Adresse, Telefon, E-Mail, Öffnungszeiten (leer = ausgeblendet)
+
+Die Startseite selbst wird über den OnPage Composer mit den Portlets des Plugins **Startseite Plus**
+(Hero-Slider, Vorteile-Leiste, Kategorie-Kacheln, Aktions-Banner, Text und Bild) gestaltet.
 
 ## Struktur
 
-- **`layout/`** — Überschreibt NOVA-Layouts: Header, Footer, Top-Bar, Navigations-Icons, Sprachumschalter
-- **`snippets/categories_mega.tpl`** — Mega-Menü mit SALE-Kategorie-Hervorhebung
-- **`productdetails/price.tpl`** — Preisdarstellung inkl. Staffelpreise und Sonderpreise
-- **`themes/my-nova/`** — SCSS + kompiliertes CSS für das my-nova Theme; `custom.css` für Anpassungen ohne SCSS-Compiler
-- **`themes/snowshop/`** — SCSS + kompiliertes CSS für das Snowshop-Theme; `custom.css` für Anpassungen
-- **`js/custom.js`** — Eigenes JavaScript (wird als letztes geladen)
-- **`mediafiles/`** — Template-eigene Bilder (Frontpage-Banner, Payment-/Versand-Logos)
+- **`layout/header.tpl`** — NOVA 5.8.0 plus Klasse `snowshop-topbar` und Include der Hinweisleiste
+- **`layout/header_top_bar.tpl`** — Top-Bar mit Vorteilen, Währungsauswahl und Aktionshinweis
+- **`layout/header_promobar.tpl`** — Hinweisleiste unter dem Header (nur bis Breakpoint lg)
+- **`layout/header_nav_icons.tpl`**, **`layout/header_nav_language_top_bar.tpl`** — Sprachumschalter als Globus-Icon
+- **`layout/footer.tpl`** — Newsletter-Band, Marke/Kontakt, Linkboxen, Vertrauensleiste, Copyright
+- **`snippets/categories_mega.tpl`** — Mega-Menü mit SALE-Hervorhebung, ohne Dropdown-Pfeile (NOVA 5.8.0-Basis)
+- **`productdetails/price.tpl`** — NOVA 5.8.0 plus Klasse `sonderpreis-neue-farbe` für Sonderpreise
+- **`css/snowshop-modern.css`** — Design Header/Footer
+- **`themes/<theme>/sass/`** — SCSS-Quellen (nur noch Regeln, die Theme-Farben brauchen); `custom.css` für Kleinigkeiten
+- **`js/custom.js`** — eigenes JavaScript
+- **`mediafiles/`** — Zahlungs-/Versand-Logos, Startseiten-Bilder
 
-## CSS anpassen
+## Update auf eine neue NOVA-Version
 
-Kleine CSS-Anpassungen direkt in `themes/<theme>/custom.css` eintragen — diese Datei wird nach dem kompilierten CSS geladen und überschreibt es.
+Für jede hier überschriebene Datei den NOVA-Diff prüfen (JTL veröffentlicht z. B.
+`nova-v5.7.3-to-v5.8.0-tpl.diff`) und die Änderungen übernehmen. Die Child-Anpassungen sind in den Dateien
+als Kommentar markiert bzw. oben beschrieben.
 
-Für größere Änderungen die SCSS-Dateien unter `themes/<theme>/sass/` bearbeiten und anschließend mit dem JTL-Theme-Editor Plugin oder einem externen SCSS-Compiler neu kompilieren.
+## Changelog
 
-## Top-Bar
+### 5.8.0
+- NOVA 5.8.0 übernommen: `header.tpl` (Font-Preload, neuer Slider-Include), `price.tpl` (Klassen `old-price-dynamic`,
+  `discount-dynamic` für die dynamische Preisaktualisierung), `categories_mega.tpl` (`<span>` statt `<strong>` in Mobil-Überschriften)
+- Neues Design für Top-Bar, Header, Mega-Menü und Footer (`css/snowshop-modern.css`)
+- Top-Bar: Vorteile statt Zahlungslogos, Aktionshinweis rechts; Zahlungslogos jetzt in der Vertrauensleiste im Footer
+- Footer: Newsletter-Band in Akzentfarbe, Marke mit Claim/Kontakt/Social, Linkboxen, Vertrauensleiste, Copyright-Zeile
+- Template-Einstellungen „Snowshop: Top-Bar“ für alle Texte, Links und Kontaktdaten (deutsch/englisch)
+- Mobil: Top-Bar nicht mehr per `display:block !important` erzwungen (Lücke unter dem Header behoben)
+- SCSS aufgeräumt: alte Regeln für Slider/Bilder-Box (jetzt Plugin Startseite Plus), Top-Bar, Footer und die
+  ausgeblendete Scrollbar entfernt → Theme einmal neu kompilieren (Theme-Editor)
+- `template.xml`: Name „Snowshop“, Version 5.8.0, Standard-Theme `snowshop`
 
-Die Top-Bar (`layout/header_top_bar.tpl`) zeigt Payment-Logos und Versandhinweise. Jedes Logo hat einen eigenen Smarty-Block für einfache Überschreibbarkeit:
-
-- `layout-header-safe-shopping` — "Sichere Bezahlung"-Hinweis
-- `layout-header-apple-pay` — Apple Pay Logo
-- `layout-header-paypal` — PayPal Logo
-- `layout-header-amazon-pay` — Amazon Pay Logo
-- `layout-header-google-pay` — Google Pay Logo
-- `layout-header-shipment` — Gratis-Versand-Hinweis
+### 5.7.1
+- NOVA 5.7.1: Withdrawal-Block übernommen
