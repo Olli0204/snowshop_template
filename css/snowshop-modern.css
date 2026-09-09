@@ -123,7 +123,7 @@
 /* Hauptnavigation */
 #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link {
     position: relative;
-    padding: .95rem .8rem;
+    padding: 1.45rem .8rem .95rem; /* oben mehr Abstand: Textmitte auf Höhe von Suche und Icons (NOVA richtet unten aus) */
     color: var(--ss-dark);
     font-family: var(--ss-font-head);
     font-size: .92rem;
