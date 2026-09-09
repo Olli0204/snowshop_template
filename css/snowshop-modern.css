@@ -101,11 +101,14 @@
 #jtl-nav-wrapper #shop-logo { max-height: 46px; width: auto; }
 #jtl-nav-wrapper #logo { flex: 0 0 auto; width: auto; margin-right: 1.5rem; }
 @media (min-width: 992px) and (max-width: 1299.98px) {
-    #jtl-nav-wrapper #shop-logo { max-height: 38px; }
+    #jtl-nav-wrapper #shop-logo { max-height: 34px; }
     #jtl-nav-wrapper #logo { margin-right: 1rem; }
-    #jtl-nav-wrapper #search .search-wrapper { max-width: 170px; }
+    #jtl-nav-wrapper #search .input-group { flex-wrap: nowrap; }
+    #jtl-nav-wrapper #search .twitter-typeahead,
+    #jtl-nav-wrapper #search .form-control { width: 135px; min-width: 0; }
     #jtl-nav-wrapper #shop-nav > .nav-item > .nav-link { padding-left: .55rem; padding-right: .55rem; }
-    #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link { padding-left: .55rem; padding-right: .55rem; font-size: .86rem; }
+    #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link { padding-left: .5rem; padding-right: .5rem; font-size: .85rem; }
+    #jtl-nav-wrapper .sale-category-style { padding-left: .55rem; padding-right: .55rem; }
 }
 
 /* Hauptnavigation */
