@@ -48,14 +48,13 @@
                                     aria=['controls' => "category-dropdown-{$category->getID()}", 'expanded' => 'false']}
                                     <span class="nav-mobile-heading new-category-style {if $category->getName() == "SALE" || $category->getName() == "% Sale %"}sale-category-style{/if}">{$category->getShortName()}</span>
                                 {/link}
-                                {* Oberhalb wurden die Färbung für die sales kategorie eingefügt und die Pfeile entfernt *}
                                 <div id="category-dropdown-{$category->getID()}" class="dropdown-menu">
                                     <div class="dropdown-body">
                                         {container class="subcategory-wrapper"}
                                             {row class="lg-row-lg nav"}
                                                 {col lg=4 xl=3 class="nav-item-lg-m nav-item dropdown d-lg-none"}
                                                     {link href=$category->getURL() class="d-block"}
-                                                        <strong class="nav-mobile-heading">{lang key='menuShow' printf=$category->getShortName()}</strong>
+                                                        <span class="nav-mobile-heading font-weight-bold-util">{lang key='menuShow' printf=$category->getShortName()}</span>
                                                     {/link}
                                                 {/col}
                                                 {block name='snippets-categories-mega-sub-categories'}
@@ -77,8 +76,7 @@
                                             {/row}
                                         {/container}
                                     </div>
-                                    {* Linie am unteren Rand des Kategoriedropdowns *}
-                        <div class="category-dropdown-bottom-line"></div>
+                                    <div class="category-dropdown-bottom-line"></div>
                                 </div>
                             </li>
                         {/block}
@@ -133,14 +131,14 @@
                                         {col lg=4 xl=3 class="nav-item-lg-m nav-item d-lg-none"}
                                             {block name='snippets-categories-mega-manufacturers-header'}
                                                 {link href="{$manufacturerOverview->getURL()}"}
-                                                    <strong class="nav-mobile-heading">
+                                                    <span class="nav-mobile-heading font-weight-bold-util">
                                                         {if !empty($manufacturerOverview->getName())}
                                                             {$manufacturerTitle = $manufacturerOverview->getName()}
                                                         {else}
                                                             {$manufacturerTitle = {lang key='manufacturers'}}
                                                         {/if}
                                                         {lang key='menuShow' printf=$manufacturerTitle}
-                                                    </strong>
+                                                    </span>
                                                 {/link}
                                             {/block}
                                         {/col}
@@ -163,6 +161,7 @@
                                             {/block}
                                         {/col}
                                     {/foreach}
+                                {/row}
                                 {block name='snippets-categories-mega-manufacturers-show-all'}
                                     {if $manufacturerOverview !== null
                                         && $manufacturersTotal|default:0 > count($manufacturers)}
@@ -175,11 +174,8 @@
                                         {/row}
                                     {/if}
                                 {/block}
-                                {/row}
                             {/container}
                         </div>
-                        {* Linie am unteren Rand des Kategoriedropdowns *}
-                        <div class="category-dropdown-bottom-line"></div>
                     </div>
                 </li>
             {/block}
@@ -223,7 +219,7 @@
         {if $linkgroups->getLinkGroupByTemplate('Kopf') !== null}
         {block name='snippets-categories-mega-top-links'}
             {foreach $linkgroups->getLinkGroupByTemplate('Kopf')->getLinks() as $Link}
-                {navitem class="nav-scrollbar-item d-lg-none" active=$Link->getIsActive() href=$Link->getURL() title=$Link->getTitle() target=$Link->getTarget()}
+                {navitem class="nav-scrollbar-item d-lg-none" active=$Link->getIsActive() href=$Link->getURL() target=$Link->getTarget()}
                     {$Link->getName()}
                 {/navitem}
             {/foreach}
@@ -234,7 +230,7 @@
                 {if JTL\Session\Frontend::getCurrencies()|count > 1}
                     <li class="currency-nav-scrollbar-item nav-item nav-scrollbar-item dropdown dropdown-full d-lg-none">
                         {block name='layout-header-top-bar-user-settings-currency-link'}
-                            {link id='currency-dropdown' href='#' title={lang key='currency'} class="nav-link dropdown-toggle" target="_self" tabindex="0" aria=['controls' => 'currency-dropdown-menu', 'expanded' => 'false']}
+                            {link id='currency-dropdown' href='#' class="nav-link dropdown-toggle" target="_self" tabindex="0" aria=['controls' => 'currency-dropdown-menu', 'expanded' => 'false']}
                                 {lang key='currency'}
                             {/link}
                         {/block}
@@ -245,7 +241,7 @@
                                         {row class="lg-row-lg nav"}
                                             {col lg=4 xl=3 class="nav-item-lg-m nav-item dropdown d-lg-none"}
                                                 {block name='layout-header-top-bar-user-settings-currency-header'}
-                                                    <strong class="nav-mobile-heading">{lang key='currency'}</strong>
+                                                    <span class="nav-mobile-heading font-weight-bold-util">{lang key='currency'}</span>
                                                 {/block}
                                             {/col}
                                             {foreach JTL\Session\Frontend::getCurrencies() as $currency}

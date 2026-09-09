@@ -134,18 +134,18 @@
 
                             {block name='productdetails-price-special-prices-detail'}
                                 {if $Artikel->Preise->Sonderpreis_aktiv && $Einstellungen.artikeldetails.artikeldetails_sonderpreisanzeige == 2}
-                                    <div class="text-danger text-stroke text-nowrap-util">
-                                        {lang key='oldPrice'}: {$Artikel->Preise->alterVKLocalized[$NettoPreise]}
+                                    <div class="text-danger text-stroke text-nowrap-util old-price-dynamic">
+                                        {lang key='oldPrice'}: <span class="old-price-value">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</span>
                                     </div>
                                 {elseif !$Artikel->Preise->Sonderpreis_aktiv && $Artikel->Preise->rabatt > 0}
                                     {if $Einstellungen.artikeldetails.artikeldetails_rabattanzeige == 3 || $Einstellungen.artikeldetails.artikeldetails_rabattanzeige == 4}
-                                        <div class="text-danger text-stroke text-nowrap-util">
-                                            {lang key='oldPrice'}: {$Artikel->Preise->alterVKLocalized[$NettoPreise]}
+                                        <div class="text-danger text-stroke text-nowrap-util old-price-dynamic">
+                                            {lang key='oldPrice'}: <span class="old-price-value">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</span>
                                         </div>
                                     {/if}
                                     {if $Einstellungen.artikeldetails.artikeldetails_rabattanzeige == 2 || $Einstellungen.artikeldetails.artikeldetails_rabattanzeige == 4}
-                                        <div class="discount">{lang key='discount'}:
-                                            <span class="value text-nowrap-util">{$Artikel->Preise->rabatt}%</span>
+                                        <div class="discount discount-dynamic">{lang key='discount'}:
+                                            <span class="value text-nowrap-util discount-percent">{$Artikel->Preise->rabatt}%</span>
                                         </div>
                                     {/if}
                                 {/if}
@@ -243,26 +243,26 @@
                         {/if}
                         {block name='productdetails-price-special-prices'}
                             {if $Artikel->Preise->Sonderpreis_aktiv && isset($Einstellungen.artikeluebersicht) && $Einstellungen.artikeluebersicht.artikeluebersicht_sonderpreisanzeige == 2}
-                                <div class="instead-of old-price">
+                                <div class="instead-of old-price old-price-dynamic">
                                     <small class="text-muted-util">
                                         {lang key='oldPrice'}:
-                                        <del class="value">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</del>
+                                        <del class="value old-price-value">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</del>
                                     </small>
                                 </div>
                             {elseif !$Artikel->Preise->Sonderpreis_aktiv && $Artikel->Preise->rabatt > 0 && isset($Einstellungen.artikeluebersicht)}
                                 {if $Einstellungen.artikeluebersicht.artikeluebersicht_rabattanzeige == 3 || $Einstellungen.artikeluebersicht.artikeluebersicht_rabattanzeige == 4}
-                                    <div class="old-price">
+                                    <div class="old-price old-price-dynamic">
                                         <small class="text-muted-util">
                                             {lang key='oldPrice'}:
-                                            <del class="value text-nowrap-util">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</del>
+                                            <del class="value text-nowrap-util old-price-value">{$Artikel->Preise->alterVKLocalized[$NettoPreise]}</del>
                                         </small>
                                     </div>
                                 {/if}
                                 {if $Einstellungen.artikeluebersicht.artikeluebersicht_rabattanzeige == 2 || isset($Einstellungen.artikeluebersicht) && $Einstellungen.artikeluebersicht.artikeluebersicht_rabattanzeige == 4}
-                                    <div class="discount">
+                                    <div class="discount discount-dynamic">
                                         <small class="text-muted-util">
                                             {lang key='discount'}:
-                                            <span class="value text-nowrap-util">{$Artikel->Preise->rabatt}%</span>
+                                            <span class="value text-nowrap-util discount-percent">{$Artikel->Preise->rabatt}%</span>
                                         </small>
                                     </div>
                                 {/if}
