@@ -145,6 +145,7 @@
 #jtl-nav-wrapper .sale-category-style {
     display: inline-block;
     padding: .2rem .7rem;
+    margin: -.2rem 0; /* gleicht den vertikalen Innenabstand aus: Link bleibt so hoch wie die Nachbarn, Text auf gleicher Höhe */
     border-radius: 2rem;
     background: #fff0e0;
     background: color-mix(in srgb, var(--ss-accent) 18%, #fff);

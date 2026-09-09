@@ -66,6 +66,10 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.2
+- SALE-Pille auf gleicher Texthöhe wie die übrigen Menüpunkte: ihr vertikaler Innenabstand wird per negativem Rand ausgeglichen, der Link bleibt 69 px hoch wie die Nachbarn; keine weiteren Änderungen an der Navigation
+- Versionssprung, damit der Cache-Parameter `?v=` der CSS-Dateien wechselt
+
 ### 5.8.1
 - Top-Bar: Aktionshinweis über Wrapper-Klasse zentriert
 - Header-CSS sonst auf Stand 5.8.0 (die Hauptnavigation nutzt bewusst das NOVA-Standard-Styling)
