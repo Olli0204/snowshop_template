@@ -185,8 +185,8 @@
                                 {block name='layout-footer-trust-payment'}
                                     <div class="snowshop-footer__trust-group">
                                         <span class="snowshop-footer__trust-label">{if $spIsEn}Payment{else}Bezahlung{/if}</span>
-                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/paypal_white_bearbeitet.png" alt="PayPal" height="20" loading="lazy"></span>
-                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/amazonpay-logo-white.png" alt="Amazon Pay" height="20" loading="lazy"></span>
+                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/paypal_colour_bearbeitet.png" alt="PayPal" height="20" loading="lazy"></span>
+                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/amazonpay-logo-colour.png" alt="Amazon Pay" height="20" loading="lazy"></span>
                                         <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/apple-pay.png" alt="Apple Pay" height="20" loading="lazy"></span>
                                         <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/google-pay.png" alt="Google Pay" height="20" loading="lazy"></span>
                                         <span class="snowshop-footer__chip snowshop-footer__chip--text">{if $spIsEn}Prepayment{else}Vorkasse{/if}</span>
@@ -195,14 +195,14 @@
                                 {block name='layout-footer-trust-shipping'}
                                     <div class="snowshop-footer__trust-group">
                                         <span class="snowshop-footer__trust-label">{if $spIsEn}Shipping{else}Versand{/if}</span>
-                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/dpd_white.png" alt="DPD" height="22" loading="lazy"></span>
-                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/dhl_white.png" alt="DHL" height="22" loading="lazy"></span>
+                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/dpd_colour.png" alt="DPD" height="22" loading="lazy"></span>
+                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/dhl_colour.png" alt="DHL" height="22" loading="lazy"></span>
                                     </div>
                                 {/block}
                                 {block name='layout-footer-trust-secure'}
                                     <div class="snowshop-footer__trust-group">
                                         <span class="snowshop-footer__trust-label">{if $spIsEn}Secure shopping{else}Sicher einkaufen{/if}</span>
-                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/ssl_white.png" alt="SSL" height="22" loading="lazy"></span>
+                                        <span class="snowshop-footer__chip"><img src="{$shopURL}/{$currentTemplateDir}mediafiles/special_logos/ssl_colour.png" alt="SSL" height="22" loading="lazy"></span>
                                     </div>
                                 {/block}
                             </div>

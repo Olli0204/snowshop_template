@@ -68,6 +68,7 @@
 }
 #header-top-bar.snowshop-topbar .nav-link:hover .snowshop-topbar__arrow { transform: translateX(3px); }
 #header-top-bar.snowshop-topbar .dropdown-menu { font-size: .85rem; }
+#header-top-bar.snowshop-topbar .snowshop-topbar__promo:only-child { margin: 0 auto; }
 
 /* Hinweisleiste unterhalb des Headers (Smartphone/Tablet) */
 .snowshop-promobar {
@@ -98,23 +99,31 @@
     box-shadow: 0 2px 14px rgba(0, 0, 0, .06);
 }
 #jtl-nav-wrapper #shop-logo { max-height: 46px; width: auto; }
+#jtl-nav-wrapper #logo { flex: 0 0 auto; width: auto; margin-right: 1.5rem; }
+@media (min-width: 992px) and (max-width: 1299.98px) {
+    #jtl-nav-wrapper #shop-logo { max-height: 38px; }
+    #jtl-nav-wrapper #logo { margin-right: 1rem; }
+    #jtl-nav-wrapper #search .search-wrapper { max-width: 170px; }
+    #jtl-nav-wrapper #shop-nav > .nav-item > .nav-link { padding-left: .55rem; padding-right: .55rem; }
+    #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link { padding-left: .55rem; padding-right: .55rem; font-size: .86rem; }
+}
 
 /* Hauptnavigation */
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link {
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link {
     position: relative;
-    padding: .95rem .9rem;
+    padding: .95rem .8rem;
     color: var(--ss-dark);
     font-family: var(--ss-font-head);
-    font-size: .95rem;
+    font-size: .92rem;
     font-weight: 600;
     letter-spacing: .01em;
     transition: color .2s;
 }
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link::after {
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link::after {
     content: "";
     position: absolute;
-    left: .9rem;
-    right: .9rem;
+    left: .8rem;
+    right: .8rem;
     bottom: .5rem;
     height: 2px;
     border-radius: 2px;
@@ -123,13 +132,13 @@
     transform-origin: left center;
     transition: transform .25s ease;
 }
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link:hover,
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item.active > .nav-link,
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item.show > .nav-link { color: var(--ss-dark); }
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link:hover::after,
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item.active > .nav-link::after,
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item.show > .nav-link::after { transform: scaleX(1); }
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item:has(.sale-category-style) > .nav-link::after { display: none; }
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link:hover,
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item.active > .nav-link,
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item.show > .nav-link { color: var(--ss-dark); }
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link:hover::after,
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item.active > .nav-link::after,
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item.show > .nav-link::after { transform: scaleX(1); }
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item:has(.sale-category-style) > .nav-link::after { display: none; }
 
 /* SALE als Akzent-Pill */
 #jtl-nav-wrapper .sale-category-style {
@@ -146,7 +155,7 @@
 #jtl-nav-wrapper .nav-link:hover .sale-category-style { background: var(--ss-accent); color: #fff; }
 
 /* Mega-Menü */
-#jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .dropdown-menu {
+#jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .dropdown-menu {
     border: 0;
     border-top: 3px solid var(--ss-accent);
     border-radius: 0 0 var(--ss-radius) var(--ss-radius);
@@ -197,8 +206,8 @@
 
 /* Mobile Navigation (aufgeklapptes Menü) */
 @media (max-width: 991.98px) {
-    #jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link { padding: .8rem 0; font-size: 1rem; }
-    #jtl-nav-wrapper #mainNavigation > .nav > .nav-item > .nav-link::after { display: none; }
+    #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link { padding: .8rem 0; font-size: 1rem; }
+    #jtl-nav-wrapper #mainNavigation .navbar-nav > .nav-item > .nav-link::after { display: none; }
     #jtl-nav-wrapper #mainNavigation .dropdown-menu { border-top: 0; box-shadow: none; }
 }
 

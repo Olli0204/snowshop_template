@@ -37,7 +37,7 @@ SCSS-Kompilierung**. Farben kommen aus dem Theme (`--primary`).
 
 Texte und Kontaktdaten werden im Backend gepflegt: **Template → Einstellungen → „Snowshop: Top-Bar“**
 
-- Drei Vorteile für die Top-Bar (Text, englischer Text, Link, Font-Awesome-Icon)
+- Vorteile in der Top-Bar ein-/ausschalten; drei Vorteile (Text, englischer Text, Link, Font-Awesome-Icon)
 - Aktionshinweis (z. B. Newsletter-Rabatt): Desktop rechts in der Top-Bar, mobil als schmale Leiste unter dem Header
 - Footer: Claim, Adresse, Telefon, E-Mail, Öffnungszeiten (leer = ausgeblendet)
 
@@ -65,6 +65,11 @@ Für jede hier überschriebene Datei den NOVA-Diff prüfen (JTL veröffentlicht 
 als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
+
+### 5.8.1
+- Top-Bar: Vorteile per Einstellung abschaltbar (Standard aus, Aktionshinweis zentriert) – die Startseite hat bereits die Vorteile-Leiste
+- Footer: Vertrauensleiste mit farbigen Logos auf dunklen Chips
+- Header: Navigations-Selektoren an NOVA 5.8 (`#mainNavigation .navbar-nav`) angepasst, kompaktere Abstände zwischen 992 und 1299 px, damit fünf Hauptpunkte neben Logo und Suche passen
 
 ### 5.8.0
 - `Bootstrap.php` entfernt: JTL nutzt die NOVA-Bootstrap des Parents; der Ordnername muss nicht mehr zum Namespace passen

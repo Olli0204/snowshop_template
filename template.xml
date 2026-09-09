@@ -5,9 +5,9 @@
     <URL></URL>
     <Parent>NOVA</Parent>
     <Preview>preview.png</Preview>
-    <Version>5.8.0</Version>
+    <Version>5.8.1</Version>
     <MinShopVersion>5.8.0</MinShopVersion>
-    <Description>Snowshop Child-Template auf NOVA-Basis – Version 5.8.0</Description>
+    <Description>Snowshop Child-Template auf NOVA-Basis – Version 5.8.1</Description>
     <Settings>
         <Section Name="Theme" Key="theme">
             <Setting Description="Theme" Key="theme_default" Type="select" Value="snowshop" override="true">
@@ -16,6 +16,10 @@
             </Setting>
         </Section>
         <Section Name="Snowshop: Top-Bar" Key="snowshop">
+            <Setting Description="Vorteile in der Top-Bar anzeigen (die Startseite hat bereits eine Vorteile-Leiste)" Key="topbar_usps" Type="select" Value="N">
+                <Option Value="N">Nein – nur Aktionshinweis, zentriert</Option>
+                <Option Value="Y">Ja – Vorteile links, Aktionshinweis rechts</Option>
+            </Setting>
             <Setting Description="Vorteil 1 – Text" Key="usp_1_text" Type="text" Value="Gratis Versand ab 100 €"/>
             <Setting Description="Vorteil 1 – Text (Englisch)" Key="usp_1_text_en" Type="text" Value="Free shipping from 100 €"/>
             <Setting Description="Vorteil 1 – Link" Key="usp_1_url" Type="text" Value="Versandkosten-Liefergebiet"/>
