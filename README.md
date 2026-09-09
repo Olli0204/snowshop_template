@@ -15,9 +15,10 @@ Den geklonten Ordner direkt in das Verzeichnis `/templates/` des JTL-Shops kopie
 git clone git@github.com:Olli0204/snowshop_template.git /pfad/zum/shop/templates/snowshop_template
 ```
 
-Der Ordnername sollte `snowshop_template` lauten, damit er zum Namespace in `Bootstrap.php`
-(`Template\snowshop_template`) passt. Heißt der Ordner anders (z. B. `Snowshop570`), lädt JTL die
-`Bootstrap.php` nicht – das Template funktioniert trotzdem, nur eigene PHP-Erweiterungen dort würden fehlen.
+Der Ordnername ist frei wählbar (z. B. `snowshop_template` oder `Snowshop570`). Das Template hat bewusst **keine
+eigene `Bootstrap.php`**: JTL lädt dann automatisch die Bootstrap des Parent-Templates NOVA. Eine Child-`Bootstrap.php`
+müsste einen Namespace tragen, der exakt dem Ordnernamen entspricht – sonst meldet das Backend
+„Fehlerhaft: Kein gültiger Namespace“.
 
 Nach dem Kopieren: Backend → Template → Snowshop aktivieren, dann **Systemverwaltung → Cache leeren**.
 
@@ -66,6 +67,7 @@ als Kommentar markiert bzw. oben beschrieben.
 ## Changelog
 
 ### 5.8.0
+- `Bootstrap.php` entfernt: JTL nutzt die NOVA-Bootstrap des Parents; der Ordnername muss nicht mehr zum Namespace passen
 - NOVA 5.8.0 übernommen: `header.tpl` (Font-Preload, neuer Slider-Include), `price.tpl` (Klassen `old-price-dynamic`,
   `discount-dynamic` für die dynamische Preisaktualisierung), `categories_mega.tpl` (`<span>` statt `<strong>` in Mobil-Überschriften)
 - Neues Design für Top-Bar, Header, Mega-Menü und Footer (`css/snowshop-modern.css`)

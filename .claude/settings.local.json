@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:build.jtl-shop.de)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -sSL \"https://build.jtl-shop.de/storage/nova-v5.7.0-to-v5.7.1-tpl.diff\" -o nova-5.7.1.diff)",
+      "Bash(git push *)",
+      "Bash(git remote *)",
+      "Bash(grep -nE '^\\\\$snowshop|^\\\\$|color|grey' themes/snowshop/sass/_variables.scss)",
+      "Bash(git fetch *)",
+      "Bash(git --no-pager log --oneline -8 origin/main)",
+      "Bash(git rev-list *)"
+    ]
+  }
+}
