@@ -66,6 +66,9 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.3
+- Mobil: Copyright-Zeile bekommt unten 5 rem Freiraum, damit „Vertrag widerrufen“ und Preishinweis nicht hinter dem fixen Cookie-Button (unten links) bzw. dem Nach-oben-Button liegen
+
 ### 5.8.2
 - SALE-Pille auf gleicher Texthöhe wie die übrigen Menüpunkte: ihr vertikaler Innenabstand wird per negativem Rand ausgeglichen, der Link bleibt 69 px hoch wie die Nachbarn; keine weiteren Änderungen an der Navigation
 - Versionssprung, damit der Cache-Parameter `?v=` der CSS-Dateien wechselt

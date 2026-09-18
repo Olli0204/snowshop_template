@@ -5,9 +5,9 @@
     <URL></URL>
     <Parent>NOVA</Parent>
     <Preview>preview.png</Preview>
-    <Version>5.8.2</Version>
+    <Version>5.8.3</Version>
     <MinShopVersion>5.8.0</MinShopVersion>
-    <Description>Snowshop Child-Template auf NOVA-Basis – Version 5.8.2</Description>
+    <Description>Snowshop Child-Template auf NOVA-Basis – Version 5.8.3</Description>
     <Settings>
         <Section Name="Theme" Key="theme">
             <Setting Description="Theme" Key="theme_default" Type="select" Value="snowshop" override="true">

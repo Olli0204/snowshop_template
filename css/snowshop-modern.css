@@ -369,4 +369,6 @@
     #footer.snowshop-footer .snowshop-footer__box { margin-bottom: 0; }
     #footer.snowshop-footer .snowshop-footer__trust-inner { justify-content: flex-start; gap: .75rem 1.5rem; }
     #footer.snowshop-footer .snowshop-footer__bottom-inner { flex-direction: column; align-items: flex-start; }
+    /* Platz für die fixen Buttons unten (Cookie-Einstellungen links, Nach-oben rechts): 40 px Button + 16 px Abstand */
+    #footer.snowshop-footer #copyright { padding-bottom: 5rem; }
 }
