@@ -55,7 +55,7 @@ Die Startseite selbst wird über den OnPage Composer mit den Portlets des Plugin
 - **`productdetails/price.tpl`** — NOVA 5.8.0 plus Klasse `sonderpreis-neue-farbe` für Sonderpreise
 - **`css/snowshop-modern.css`** — Design Header/Footer
 - **`themes/<theme>/sass/`** — SCSS-Quellen (nur noch Regeln, die Theme-Farben brauchen); `custom.css` für Kleinigkeiten
-- **`js/custom.js`** — eigenes JavaScript
+- **`js/custom.js`** — eigenes JavaScript; enthält den Collapse-Scroll-Fix (siehe Changelog 5.8.4)
 - **`mediafiles/`** — Zahlungs-/Versand-Logos, Startseiten-Bilder
 
 ## Update auf eine neue NOVA-Version
@@ -65,6 +65,9 @@ Für jede hier überschriebene Datei den NOVA-Diff prüfen (JTL veröffentlicht 
 als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
+
+### 5.8.4
+- Fix (NOVA-Fehler): Aufklappbare Boxen mit `data-toggle="collapse"` (Footer-Linkboxen, Filter auf dem Smartphone) sprangen beim Antippen zum Seitenanfang, weil NOVAs Smooth-Scroll für `#`-Anker Collapse-Trigger nicht ausnimmt. `js/custom.js` entfernt den NOVA-Handler von diesen Links (Fallback: Collapse selbst auslösen)
 
 ### 5.8.3
 - Mobil: Copyright-Zeile bekommt unten 5 rem Freiraum, damit „Vertrag widerrufen“ und Preishinweis nicht hinter dem fixen Cookie-Button (unten links) bzw. dem Nach-oben-Button liegen
