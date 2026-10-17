@@ -403,3 +403,30 @@
         max-width: 200px !important;
     }
 }
+
+/* ===== Warenkorb-Hinweis (#pushed-success) =====
+   Box nach „In den Warenkorb“ auf der Artikelseite. NOVA gibt dem Bild ein Drittel der Breite ohne Höhenbegrenzung
+   (hochformatige Boards wurden über 600 px hoch), ohne Cross-Selling stehen Label und Wert je über die halbe
+   Seitenbreite auseinander (Cross-Selling blendet NOVA auf dem Handy selbst aus). */
+#pushed-success .pushed-success-image-wrapper .image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 180px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+#pushed-success dl.form-row > dt { flex: 0 0 9rem; max-width: 9rem; }
+#pushed-success dl.form-row > dd { flex: 0 0 calc(100% - 9rem); max-width: calc(100% - 9rem); }
+
+@media (min-width: 768px) {
+    #pushed-success .pushed-success-image-wrapper { flex: 0 0 160px; max-width: 160px; }
+    /* ohne Cross-Selling (Produktspalte volle Breite): Buttons nicht über die ganze Seite ziehen */
+    #pushed-success .col-md-12 > .pushed-success-buttons { max-width: 40rem; }
+}
+/* Tablet mit Cross-Selling: Produktspalte nur halb breit – Bild und Buttons untereinander statt nebeneinander */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #pushed-success .col-md-6 .pushed-success-image-wrapper,
+    #pushed-success .col-md-6 > .pushed-success-buttons > .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+}
