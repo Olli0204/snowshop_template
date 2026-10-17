@@ -66,6 +66,9 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.8
+- Warenkorb: Artikelbilder einheitlich hoch statt im natürlichen Seitenverhältnis (Boards waren doppelt so hoch wie Bindungen) – Dropdown im Header 50 × 60 px, Warenkorbseite 120 px (mobil 90 px), jeweils `object-fit: contain`; Zahlungs-Logos im Dropdown unverändert. Geprüft mit Chromium und WebKit bei 1400 und 390 px.
+
 ### 5.8.7
 - Warenkorb-Hinweis nach „In den Warenkorb“ (`#pushed-success`): Produktbild höchstens 180 px hoch in einer 160 px breiten Spalte (vorher ein Drittel der Breite ohne Höhenbegrenzung, Boards über 600 px hoch), Angaben als feste Label-/Wert-Spalten statt je halber Seitenbreite, Buttons ohne Cross-Selling höchstens 40rem breit, auf dem Tablet mit Cross-Selling Bild und Buttons untereinander. Geprüft mit Chromium und WebKit bei 1400, 800 und 390 px, mit und ohne „Kunden kauften dazu“.
 

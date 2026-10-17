@@ -430,3 +430,22 @@
     #pushed-success .col-md-6 .pushed-success-image-wrapper,
     #pushed-success .col-md-6 > .pushed-success-buttons > .col-md-6 { flex: 0 0 100%; max-width: 100%; }
 }
+
+/* ===== Warenkorb: einheitlich hohe Artikelbilder =====
+   NOVA gibt die Bilder in voller Spaltenbreite mit natürlichem Seitenverhältnis aus – hochformatige Boards
+   wurden doppelt so hoch wie Bindungen daneben. Feste Höhe mit object-fit: contain (Dropdown im Header und
+   Warenkorbseite). */
+.cart-dropdown img.img-sm {
+    width: 50px;
+    height: 60px;
+    object-fit: contain;
+}
+.cart-items-image img {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+@media (max-width: 767.98px) {
+    .cart-items-image img { height: 90px; }
+}
