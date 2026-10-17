@@ -66,6 +66,9 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.7
+- Warenkorb-Hinweis nach „In den Warenkorb“ (`#pushed-success`): Produktbild höchstens 180 px hoch in einer 160 px breiten Spalte (vorher ein Drittel der Breite ohne Höhenbegrenzung, Boards über 600 px hoch), Angaben als feste Label-/Wert-Spalten statt je halber Seitenbreite, Buttons ohne Cross-Selling höchstens 40rem breit, auf dem Tablet mit Cross-Selling Bild und Buttons untereinander. Geprüft mit Chromium und WebKit bei 1400, 800 und 390 px, mit und ohne „Kunden kauften dazu“.
+
 ### 5.8.6
 - Vergleichsliste: Produktbilder einheitlich 240 px hoch (mobil 180 px, `object-fit: contain`), Artikelspalten gleich breit (300 px, mobil 200 px). Vorher wurden hochformatige Board-Fotos 600–900 px hoch und die Spalten unterschiedlich breit, weil NOVA die Bildhöhe nicht begrenzt und Browser das `max-width` der Backend-Einstellung „Spaltenbreite“ in Tabellenzellen ignorieren. Geprüft mit Chromium und WebKit bei 1400 und 390 px.
 
