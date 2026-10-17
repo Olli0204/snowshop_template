@@ -372,3 +372,34 @@
     /* Platz für die fixen Buttons unten (Cookie-Einstellungen links, Nach-oben rechts): 40 px Button + 16 px Abstand */
     #footer.snowshop-footer #copyright { padding-bottom: 5rem; }
 }
+
+/* ===== Vergleichsliste =====
+   NOVA begrenzt die Produktbilder nicht: hochformatige Board-Fotos wurden 600–900 px hoch, je nach Seitenverhältnis
+   unterschiedlich. Die Backend-Einstellung „Spaltenbreite“ setzt NOVA als min-/max-width auf die Zellen, max-width
+   ignorieren Browser in Tabellen – die Spalten wuchsen mit dem Bild. Bilder daher auf feste Höhe (object-fit: contain),
+   Artikelspalten fest breit. */
+.comparelist .comparelist-item .comparelist-item-image {
+    display: block;
+    width: 100%;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+}
+.comparelist .table thead th.comparelist-item,
+.comparelist .table tbody td[data-product-id-cl] {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+@media (max-width: 991.98px) {
+    .comparelist .comparelist-item .comparelist-item-image { height: 180px; }
+    /* !important schlägt das Inline-min-width (Spaltenbreite) aus dem NOVA-Template */
+    .comparelist .table thead th.comparelist-item,
+    .comparelist .table tbody td[data-product-id-cl] {
+        width: 200px;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+}

@@ -66,6 +66,9 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.6
+- Vergleichsliste: Produktbilder einheitlich 240 px hoch (mobil 180 px, `object-fit: contain`), Artikelspalten gleich breit (300 px, mobil 200 px). Vorher wurden hochformatige Board-Fotos 600–900 px hoch und die Spalten unterschiedlich breit, weil NOVA die Bildhöhe nicht begrenzt und Browser das `max-width` der Backend-Einstellung „Spaltenbreite“ in Tabellenzellen ignorieren. Geprüft mit Chromium und WebKit bei 1400 und 390 px.
+
 ### 5.8.4
 - Fix (NOVA-Fehler): Aufklappbare Boxen mit `data-toggle="collapse"` (Footer-Linkboxen, Filter auf dem Smartphone) sprangen beim Antippen zum Seitenanfang, weil NOVAs Smooth-Scroll für `#`-Anker Collapse-Trigger nicht ausnimmt. `js/custom.js` entfernt den NOVA-Handler von diesen Links (Fallback: Collapse selbst auslösen)
 
