@@ -68,3 +68,69 @@
         timer = setTimeout(apply, 100);
     }).observe(document.documentElement, { childList: true, subtree: true });
 })();
+
+/*
+ * Fix: Trusted-Shops-Trustbadge erscheint nach der Cookie-Zustimmung nicht.
+ *
+ * Ursache im Cookie-Plugin (ws5_eucookie): Ohne Zustimmung schreibt es beim Rendern das src eines Scripts
+ * nach data-src. Beim Freischalten (main-v2.6.0.js, Funktion st) überspringt es aber jedes Script, das kein
+ * data-type trägt („already unblocked. Skipping.“). Das Snippet der Trusted-Shops-App hat kein type-Attribut,
+ * also bleibt es für immer blockiert. Sichtbar wird das durch den LiteSpeed-Cache: Die meisten gecachten
+ * Seiten stammen von Besuchern ohne Zustimmung (data-src), und auch wer zugestimmt hat, bekommt diese Fassung.
+ *
+ * Lösung: Blockierte Scripts ohne data-type selbst freischalten, sobald für ihren Dienst eine Zustimmung
+ * vorliegt – beim Laden der Seite (Cookie eu_cookie_store) und nach einer Änderung (euCookie_consentChanged).
+ */
+(function () {
+    'use strict';
+
+    var SELECTOR = 'script[data-service_id][data-src]:not([src]):not([data-type])';
+
+    function storedConsent() {
+        var match = document.cookie.match(/(?:^|;\s*)eu_cookie_store=([^;]*)/);
+        if (!match) {
+            return {};
+        }
+        try {
+            return JSON.parse(decodeURIComponent(match[1])) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function hasConsent(serviceId, stored) {
+        var services = window.EuCookie && window.EuCookie.services;
+        if (Array.isArray(services)) {
+            for (var i = 0; i < services.length; i++) {
+                if (services[i] && services[i].serviceId === serviceId) {
+                    return services[i].consent === true;
+                }
+            }
+        }
+        return stored[serviceId] === true;
+    }
+
+    function unblock() {
+        var stored = storedConsent();
+        document.querySelectorAll(SELECTOR).forEach(function (blocked) {
+            if (!hasConsent(blocked.getAttribute('data-service_id'), stored)) {
+                return;
+            }
+            var script = document.createElement('script');
+            Array.prototype.forEach.call(blocked.attributes, function (attr) {
+                if (attr.name !== 'data-src') {
+                    script.setAttribute(attr.name, attr.value);
+                }
+            });
+            script.src = blocked.getAttribute('data-src');
+            blocked.parentNode.replaceChild(script, blocked);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', unblock);
+    } else {
+        unblock();
+    }
+    document.addEventListener('euCookie_consentChanged', unblock);
+})();
