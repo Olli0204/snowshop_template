@@ -66,6 +66,9 @@ als Kommentar markiert bzw. oben beschrieben.
 
 ## Changelog
 
+### 5.8.9
+- Kasse: Artikelbilder in der Bestellübersicht (Bestätigungsseite und Zahlungsseite, `checkout/inc_order_items.tpl`) einheitlich 120 px hoch (mobil 90 px) wie im Warenkorb – vorher Boards etwa doppelt so hoch wie Bindungen. Geprüft mit Chromium und WebKit bei 1400 und 390 px am nachgebauten Markup mit echten Shop-Bildern.
+
 ### 5.8.8
 - Warenkorb: Artikelbilder einheitlich hoch statt im natürlichen Seitenverhältnis (Boards waren doppelt so hoch wie Bindungen) – Dropdown im Header 50 × 60 px, Warenkorbseite 120 px (mobil 90 px), jeweils `object-fit: contain`; Zahlungs-Logos im Dropdown unverändert. Geprüft mit Chromium und WebKit bei 1400 und 390 px.
 
